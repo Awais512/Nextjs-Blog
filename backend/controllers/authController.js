@@ -12,11 +12,11 @@ exports.login = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
   if (!user) {
     res.status(400);
-    throw new Error('User does bot Exist... Please Sign up');
+    throw new Error('Email does not Exist... Please Sign up');
   }
   if (!user.authenticate(password)) {
     res.status(400);
-    throw new Error('Email and Password do not match');
+    throw new Error('Password do not match! Please add a correct password');
   }
 
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
