@@ -24,6 +24,19 @@ export const login = async ({ email, password }) => {
   return await axios.post(`${API}/auth/login`, { email, password }, config);
 };
 
+export const signout = (next) => {
+  removeCookie('token');
+  removeLocalStorage('user');
+  next();
+
+  return axios
+    .get(`${API}/auth/signout`)
+    .then((response) => {
+      console.log('signout success');
+    })
+    .catch((err) => console.log(err));
+};
+
 //Set Cookie
 export const setCookie = (key, value) => {
   if (process.browser) {
@@ -41,7 +54,7 @@ export const removeCookie = (key) => {
 //get Cookie
 export const getCookie = (key) => {
   if (process.browser) {
-    cookie.get(key);
+    return cookie.get(key);
   }
 };
 

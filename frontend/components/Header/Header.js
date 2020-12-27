@@ -12,6 +12,8 @@ import {
   NavbarText,
 } from 'reactstrap';
 import { APP_NAME } from '../../config';
+import { isAuth, signout } from '../../actions/auth';
+import Router from 'next/router';
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,6 +43,22 @@ const Header = (props) => {
                   <NavLink style={{ cursor: 'pointer' }}>Register</NavLink>
                 </Link>
               </NavItem>
+              {isAuth() && (
+                <NavItem>
+                  <Link href='/register'>
+                    <NavLink
+                      onClick={() => {
+                        signout(() => {
+                          Router.push('/login');
+                        });
+                      }}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      Logout
+                    </NavLink>
+                  </Link>
+                </NavItem>
+              )}
             </>
           </Nav>
         </Collapse>
