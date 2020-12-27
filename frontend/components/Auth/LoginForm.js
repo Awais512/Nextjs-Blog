@@ -1,4 +1,4 @@
-import { login } from '../../actions/auth';
+import { authenticate, login } from '../../actions/auth';
 import { toast } from 'react-toastify';
 import Router from 'next/router';
 
@@ -18,7 +18,9 @@ const LoginForm = ({ values, setValues }) => {
         email: '',
         password: '',
       });
-      Router.push(`/`);
+      authenticate(data, () => {
+        Router.push(`/`);
+      });
     } catch (error) {
       console.log(error.response.data.message);
       toast.error(error.response.data.message);
