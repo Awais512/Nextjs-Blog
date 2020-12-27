@@ -59,3 +59,15 @@ exports.register = asyncHandler(async (req, res) => {
     throw new Error('Invalid User Data');
   }
 });
+
+exports.signout = asyncHandler(async (req, res) => {
+  res.clearCookie('token');
+  res.json({
+    message: 'Signed Out Successfully',
+  });
+});
+
+exports.requireSignin = expressJwt({
+  secret: process.env.JWT_SECRET,
+  algorithms: ['sha1', 'RS256', 'HS256'],
+});
