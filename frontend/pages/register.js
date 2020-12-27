@@ -1,11 +1,11 @@
 import Layout from '../components/shared/Layout';
 
-const Index = () => {
+const Register = () => {
   return (
     <Layout>
-      <h2>Index Page</h2>
+      <h1>Register Page</h1>
     </Layout>
   );
 };
 
-export default Index;
+export default Register;

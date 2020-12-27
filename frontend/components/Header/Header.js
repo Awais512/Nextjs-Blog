@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 
 import {
   Collapse,
@@ -18,24 +19,33 @@ const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <>
       <Navbar color='light' light expand='md'>
-        <NavbarBrand href='/'>{APP_NAME}</NavbarBrand>
+        <Link href='/'>
+          <NavLink style={{ cursor: 'pointer' }} className='font-weight-bold'>
+            {APP_NAME}
+          </NavLink>
+        </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className='ml-auto' navbar>
-            <NavItem>
-              <NavLink href='/components/'>Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href='https://github.com/reactstrap/reactstrap'>
-                GitHub
-              </NavLink>
-            </NavItem>
+            <>
+              <NavItem>
+                <Link href='/login'>
+                  <NavLink style={{ cursor: 'pointer' }}>Login</NavLink>
+                </Link>
+              </NavItem>
+
+              <NavItem>
+                <Link href='/register'>
+                  <NavLink style={{ cursor: 'pointer' }}>Register</NavLink>
+                </Link>
+              </NavItem>
+            </>
           </Nav>
         </Collapse>
       </Navbar>
-    </div>
+    </>
   );
 };
 
