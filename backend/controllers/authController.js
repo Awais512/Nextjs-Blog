@@ -42,7 +42,17 @@ exports.register = asyncHandler(async (req, res) => {
   const userExist = await User.findOne({ email });
   if (userExist) {
     res.status(400);
-    throw new Error('User already Exist');
+    throw new Error('User already Exist with this email address.');
+  }
+
+  if (!password) {
+    res.status(400);
+    throw new Error('Password is required.');
+  }
+
+  if (password.length < 6) {
+    res.status(400);
+    throw new Error('Password must be atleast 6 characters.');
   }
   const user = await User.create({ name, email, password, profile, username });
   if (user) {
