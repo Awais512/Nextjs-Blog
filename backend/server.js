@@ -15,9 +15,10 @@ const authRoutes = require('./routes/authRoutes');
 //Connect to database
 connectDb();
 
-//Body Parser
+//Middlewares
 app.use(express.json());
-//Cors
+app.use(cookieParser());
+
 app.use(cors());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));

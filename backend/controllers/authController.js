@@ -1,12 +1,34 @@
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler');
 const shortId = require('shortid');
+const jwt = require('jsonwebtoken');
+const expressJwt = require('express-jwt');
 
 //@desc     Login User
 //@route    POST /api/auth/login
 //@access   Public
 exports.login = asyncHandler(async (req, res) => {
-  res.json({ msg: 'Login route' });
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) {
+    res.status(400);
+    throw new Error('User does bot Exist... Please Sign up');
+  }
+  if (!user.authenticate(password)) {
+    res.status(400);
+    throw new Error('Email and Password do not match');
+  }
+
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: '7d',
+  });
+
+  res.cookie('token', token, { expiresIn: '7d' });
+
+  user.hashed_password = undefined;
+  user.salt = undefined;
+
+  res.json({ token, user });
 });
 
 //@desc     Register User
