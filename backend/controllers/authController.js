@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler');
+const shortId = require('shortid');
 
 //@desc     Login User
 //@route    POST /api/auth/login
@@ -12,7 +13,9 @@ exports.login = asyncHandler(async (req, res) => {
 //@route    POST /api/auth/register
 //@access   Public
 exports.register = asyncHandler(async (req, res) => {
-  const { name, email, password, profile, username } = req.body;
+  const { name, email, password } = req.body;
+  let username = shortId.generate();
+  let profile = `${process.env.CLIENT_URL}/profile/${username}`;
 
   const userExist = await User.findOne({ email });
   if (userExist) {
@@ -23,6 +26,7 @@ exports.register = asyncHandler(async (req, res) => {
   if (user) {
     res.status(201).json({
       _id: user._id,
+      role: user.role,
       username: user.username,
       name: user.name,
       email: user.email,
