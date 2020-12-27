@@ -1,10 +1,10 @@
-import React from 'react';
+import Layout from '../components/shared/Layout';
 
 const index = () => {
   return (
-    <div>
+    <Layout>
       <h2>Index Page</h2>
-    </div>
+    </Layout>
   );
 };
 
