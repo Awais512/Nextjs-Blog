@@ -1,9 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# next.js build output
+frontend/.next/
 # dependencies
 backend/node_modules
 node_modules/
-frontend/.next
+
 /.pnp
 .pnp.js
 
