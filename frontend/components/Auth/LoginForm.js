@@ -20,7 +20,11 @@ const LoginForm = ({ values, setValues }) => {
         password: '',
       });
       authenticate(data, () => {
-        Router.push(`/`);
+        if (isAuth() && isAuth().role === 1) {
+          Router.push('/admin');
+        } else {
+          Router.push('/user');
+        }
       });
     } catch (error) {
       console.log(error.response.data.message);
