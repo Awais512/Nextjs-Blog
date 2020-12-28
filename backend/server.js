@@ -12,6 +12,7 @@ dotenv.config({ path: `${__dirname}/.env` });
 const blogRoutes = require('./routes/blogRoutes');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const categoryController = require('./routes/categoryRoutes');
 
 //Connect to database
 connectDb();
@@ -29,6 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/blogs', blogRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/categories', categoryController);
 
 //Custom Error Habdler
 app.use(notFound);

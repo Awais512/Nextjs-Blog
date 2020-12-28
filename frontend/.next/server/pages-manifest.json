@@ -2,9 +2,6 @@
   "/_document": "pages/_document.js",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/login": "pages/login.js",
-  "/": "pages/index.js",
-  "/register": "pages/register.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/user": "pages/user.js",
   "/admin": "pages/admin.js"
 }
