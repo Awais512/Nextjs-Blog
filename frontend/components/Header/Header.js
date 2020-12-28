@@ -32,17 +32,21 @@ const Header = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className='ml-auto' navbar>
             <>
-              <NavItem>
-                <Link href='/login'>
-                  <NavLink style={{ cursor: 'pointer' }}>Login</NavLink>
-                </Link>
-              </NavItem>
+              {!isAuth() && (
+                <NavItem>
+                  <Link href='/login'>
+                    <NavLink style={{ cursor: 'pointer' }}>Login</NavLink>
+                  </Link>
+                </NavItem>
+              )}
+              {!isAuth() && (
+                <NavItem>
+                  <Link href='/register'>
+                    <NavLink style={{ cursor: 'pointer' }}>Register</NavLink>
+                  </Link>
+                </NavItem>
+              )}
 
-              <NavItem>
-                <Link href='/register'>
-                  <NavLink style={{ cursor: 'pointer' }}>Register</NavLink>
-                </Link>
-              </NavItem>
               {isAuth() && (
                 <NavItem>
                   <Link href='/register'>

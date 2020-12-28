@@ -1,5 +1,7 @@
-import { registerUser } from '../../actions/auth';
+import { registerUser, isAuth } from '../../actions/auth';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+import Router from 'next/router';
 
 const RegisterForm = ({ values, setValues }) => {
   const { name, email, password } = values;
@@ -24,6 +26,9 @@ const RegisterForm = ({ values, setValues }) => {
       toast.error(error.response.data.message);
     }
   };
+  useEffect(() => {
+    isAuth() && Router.push(`/`);
+  }, []);
   return (
     <div className='container'>
       <div className='row'>

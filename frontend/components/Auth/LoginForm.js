@@ -1,6 +1,7 @@
-import { authenticate, login } from '../../actions/auth';
+import { authenticate, isAuth, login } from '../../actions/auth';
 import { toast } from 'react-toastify';
 import Router from 'next/router';
+import { useEffect } from 'react';
 
 const LoginForm = ({ values, setValues }) => {
   const { email, password } = values;
@@ -26,6 +27,10 @@ const LoginForm = ({ values, setValues }) => {
       toast.error(error.response.data.message);
     }
   };
+
+  useEffect(() => {
+    isAuth() && Router.push(`/`);
+  }, []);
   return (
     <div className='container'>
       <div className='row'>
