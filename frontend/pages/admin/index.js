@@ -1,9 +1,12 @@
+import Admin from '../../components/Auth/Admin';
 import Layout from '../../components/shared/Layout';
 
 const AdminIndex = () => {
   return (
     <Layout>
-      <h2>Admin Dashboard Page</h2>
+      <Admin>
+        <h2>Admin Dashboard Page</h2>
+      </Admin>
     </Layout>
   );
 };
