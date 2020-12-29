@@ -2,7 +2,6 @@
   "/_document": "pages/_document.js",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/user": "pages/user.js",
-  "/": "pages/index.js",
-  "/login": "pages/login.js"
+  "/admin/crud/category-tag": "pages/admin/crud/category-tag.js",
+  "/admin": "pages/admin.js"
 }
