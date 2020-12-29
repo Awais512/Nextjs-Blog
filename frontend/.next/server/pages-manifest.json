@@ -2,6 +2,6 @@
   "/_document": "pages/_document.js",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/admin/crud/category-tag": "pages/admin/crud/category-tag.js",
-  "/admin": "pages/admin.js"
+  "/admin": "pages/admin.js",
+  "/admin/crud/category-tag": "pages/admin/crud/category-tag.js"
 }
